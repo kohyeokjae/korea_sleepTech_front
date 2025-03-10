@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>emmet.html</title>
+  </head>
+  <body>
+    <!-- ! HTML5 기본 구조 생성: ! + tab/enter -->
+     
+    <!-- 단순 태그: tab | enter -->
+    <div></div>
+    <a href=""></a>
+    <h1></h1>
+
+    <!-- 태그의 클래스, ID 속성을 추가 -->
+    <!-- 태그명.클래스 명 / 태그명#ID명 -->
+    <!-- div.container -->
+    <div class="container"></div>
+    <!-- div#unique -->
+    <div id="unique"></div>
+
+    <!-- 
+      cf) 태그명 생략 후 클래스, ID 속성 지정 시 div 태그로 인식
+      >> . 기호만 지정 시 div 태그에 class 속성이 비워진 형태로 인식
+    -->
+    <!-- .class-div -->
+    <div class="class-div"></div>
+    <!-- #id-div -->
+    <div id="id-div"></div>
+    <!-- . -->
+    <div class=""></div>
+    
+    <!-- ! 중첩과 형제 관계 -->
+    <!-- 자식 요소: 태그 안에 포함된 태그 (부모태그 > 자식태그) -->
+    <!-- ul>li -->
+    <ul>
+      <li></li>
+    </ul>
+    <!-- ul#unordered>li.itemm -->
+    <ul id="unordered">
+      <li class="itemm"></li>
+    </ul>
+
+    <!-- 형제 요소: 같은 선상의 요소 (형제요소+형제요소) -->
+    <!-- h1+p -->
+    <h1></h1>
+    <p></p>
+
+    <!-- h1#heading+p#paragraph -->
+    <h1 id="heading"></h1>
+    <p id="paragraph"></p>
+
+    <!-- ! 반복 요소와 그룹핑 -->
+    <!-- 반복 요소 (태그*반복횟수값) -->
+    <!-- ol>li*5 -->
+    <ol>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ol>
+
+    <!-- div.division*3 -->
+    <div class="division"></div>
+    <div class="division"></div>
+    <div class="division"></div>
+
+    <!-- 그룹핑: 여러 emmit 기능을 동시 적용 -->
+    <!-- header 태그 내에 nav 태그 작성하고 header의 형제 요로로 footer 태그 작성 -->
+    <!-- header>nav+footer -->
+    <header>
+      <nav></nav>
+      <footer></footer>
+    </header>
+
+    <!-- (header>nav)+footer -->
+    <header>
+      <nav></nav>
+    </header>
+    <footer></footer>
+
+  </body>
+</html>

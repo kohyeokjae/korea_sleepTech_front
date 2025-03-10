@@ -1,0 +1,60 @@
+.container {
+  background-color: black;
+  color: pink;
+}
+
+.navi {
+  border: 5px solid lightblue;
+}
+
+.navi ul {
+  list-style: none;
+  background-color: white;
+}
+
+.navi ul li a {
+  color: black;
+  text-decoration: none;
+}
+
+/* 가상 클래스 (동작) */
+/* link 와 visited 같이 사용하는 것을 권장 */
+.navi a:link, navi a:visited {
+  /*
+    :link 
+    방문하지 않은 링크 
+
+    :visited
+    방문한 적 있는 링크
+  */
+  color: lightgray;
+}
+
+.navi a:visited {
+  color: aqua;
+}
+
+.navi a:hover {
+  /* 
+    ! 사용자의 동작 중 마우스를 웹 요소에 올려놓는 행위
+  */
+  background-color: black;
+  color: pink;
+}
+
+.navi a:focus {
+  /* 
+    사용자 동작 중 초점이 맞춰져 있는 행위
+  */
+  background-color: pink;
+  color: black;
+}
+
+.navi a:active {
+  /* 
+    사용자 동작 중 웹 요소를 활성화하는 행위
+    >> 클릭하고 있는 동안 유지
+  */
+  background-color: aqua;
+  color: blue;
+}
