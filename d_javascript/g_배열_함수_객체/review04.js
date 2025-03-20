@@ -46,13 +46,26 @@ class GradeManagement {
     this.nextStudent = 1;
   }
 
-  addStudnet(name, scores) {
+  addStudent(name, scores) {
     const student = new Student(this.nextStudent, name, scores);
     this.students.push(student);
-    
+
+    console.log(`${name} , ${scores.Math}`);
+    this.nextStudent++;
+  }
+
+  averageScore(id) {
+    const student = (student) =>
   }
 }
 
-const studnet1 = new Student();
+// === 프로그램 실행 예제 ===
+const gradeSystem = new GradeManagement();
 
-studnet1.getAverageScore();
+// 학생 추가 예제
+gradeSystem.addStudent("홍길동", { Math: 85, English: 92, Science: 78 });
+gradeSystem.addStudent("고길동", { Math: 95, English: 88, Science: 93 });
+gradeSystem.addStudent("구길동", { Math: 65, English: 70, Science: 72 });
+gradeSystem.addStudent("훙길동", { Math: 78, English: 82, Science: 80 });
+
+gradeSystem.averageScore()
