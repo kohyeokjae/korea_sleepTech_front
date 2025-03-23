@@ -17,7 +17,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //! 색상 배열 정의 (6개)
   // : 임의의 색상 지정 가능
-  const colors = ["black", "red", "yellow", "pink", "orange", "blue"];
+  // const colors = ["black", "red", "yellow", "pink", "orange", "blue"];
+  const colors = [
+    "#cc3131",
+    "#e3ddbb",
+    "#23b923",
+    "#34bcbc",
+    "#3939db",
+    "#e5b7e4",
+  ];
 
   //! colors 배열의 색상을 복제하여 새로운 배열 cardColors 생성
   //? 스프레드(...) 연산자를 사용
@@ -125,6 +133,124 @@ document.addEventListener("DOMContentLoaded", () => {
       checkForMatch();
     }
   }
+
+  // const flipCard = (e) => {
+  //   if (!isGameStarted || lockBoard) {
+  //     return;
+  //   }
+  //   e.target.classList.add("flipped");
+  // };
+
+  //# 두 카드가 일치하는지 확인하는 함수 정의
+  function checkForMatch() {
+    let isMatch =
+      firstCard.querySelector(".card-back").style.backgroundColor ===
+      secondCard.querySelector(".card-back").style.backgroundColor;
+
+    // 카드가 매치되면 비활성화, 아닐 경우 다시 뒤집기
+    // >> 비활성화: 매치된 카드들을 다시 선택할 수 없도록 지정
+    isMatch ? disabledCards() : unflipCards();
+  }
+
+  //# 매치된 카드를 처리하는 함수 정의
+  function disabledCards() {
+    // 카드를 뒤집는 기능을 제거
+    firstCard.removeEventListener("click", firstCard);
+    secondCard.removeEventListener("click", firstCard);
+
+    // 게임판 초기화 - 사용자 함수 정의
+    resetBord();
+  }
+
+  //# 매치되지 않은 카드를 다시 뒤집는 함수 정의
+  function unflipCards() {
+    lockBoard = true; // 게임판 잠금
+
+    setTimeout(() => {
+      firstCard.classList.remove("flipped");
+      secondCard.classList.remove("flipped");
+
+      // 게임판 초기화 - 사용자 함수 정의
+      resetBord();
+    }, 1000);
+  }
+
+  //# 게임판 초기화 함수 정의
+  function resetBord() {
+    [hasFlipppedCard, lockBoard] = [false, false];
+    [firstCard, secondCard] = [null, null]; // 새로운 카드가 담길 수 있도록 설정
+  }
+
+  //! 게임 시작 시간을 기록할 변수 선언
+  let gameStartTime;
+
+  //# 'start-button' 버튼에 클릭 이벤트 리스너 추가
+  startButton.addEventListener("click", () => {
+    initializeGame(); // 게임 초기화
+
+    gameStartTime = new Date(); // 현재 시간을 게임 시작 시간으로 설정
+
+    // 버튼의 가시성 조정: 시작, 재시작, 완료 버튼의 배치를 구현
+    toggleButtonVisibility(true);
+
+    revealCardsTemporary(); // 잠시동안 카드 공개
+    isGameStarted = true;
+  });
+
+  resetButton.addEventListener("click", () => {
+    initializeGame(); // 게임 초기화
+
+    gameStartTime = new Date(); // 현재 시간을 게임 시작 시간으로 설정
+
+    // 버튼의 가시성 조정: 시작, 재시작, 완료 버튼의 배치를 구현
+    toggleButtonVisibility(true);
+
+    revealCardsTemporary(); // 잠시동안 카드 공개
+    isGameStarted = true;
+  });
+
+  completedButton.addEventListener("click", () => {
+    // 모든 카드가 뒤집혀있는지 확인
+
+    // every() 메ㅓ스
+    // : 콜백 함수를 인자로 받는 메서드
+    // - 배열의 모든 요소가 주어진 함수 조건식을 만족할 때(true값일 경우) true를 반환
+    // - 모든 카드 요소에 flipped 클래스 속성이 존재 >> 모두 뒤집어짐
+    const allFlipped = Array.from(document.querySelectorAll(".card")).every(
+      (card) => card.classList.contains("flipped")
+    );
+
+    if (allFlipped) {
+      // 모든 카드가 뒤집힌 경우
+      const gameTime = new Date() - gameStartTime;
+
+      alert(`게임 완료~~ 소요 시간: ${Math.floor(gameTime / 1000)}초`);
+
+      isGameStarted = false; // 게임 완료 시 시작 상태 false로 설정
+
+      // 게임 재시작
+      initializeGame();
+
+      // 시작 버튼만 보이도록 버튼 가시성 조정
+      toggleButtonVisibility(false);
+    } else {
+      alert("완료되지 않았습니다.");
+    }
+  });
+
+  //# 버튼 가시성 토글 함수
+  function toggleButtonVisibility(isGameStarted) {
+    // 게임 시작 여부가 true라면: 보여지지 않음
+    startButton.style.display = isGameStarted ? "none" : "block";
+    resetButton.style.display = isGameStarted ? "block" : "none";
+    completedButton.style.display = isGameStarted ? "block" : "none";
+  }
+
+  // 초기에는 시작 버튼만 표시
+  toggleButtonVisibility(false);
+
+  //게임 초기화 & 화면 렌더링
+  initializeGame();
 });
 
 //& 배열의 요소를 무작위로 섞는 사용자(커스텀) 함수
