@@ -1,5 +1,5 @@
 .DS_Store
 
-#node_modules 깃 업로드 방지
+# node_modules 깃 업로드 방지
 node_modules/
 */node_modules

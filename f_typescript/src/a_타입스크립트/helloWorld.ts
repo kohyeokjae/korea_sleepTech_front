@@ -21,4 +21,15 @@ console.log(num);
 // (sudo) npm install -g ts-node
 // npm install ts-node --save-dev
 
-console.log('ts-node로 ts파일 생성하기');
+console.log("ts-node로 ts파일 생성하기");
+
+//! git 업로드 시 node_modules 폴더를 제외하고 업로드
+// : .gitignore 파일 생성
+
+// # node_modules 깃 업로드 방지
+// node_modules/
+// */node_modules
+
+//! 해당 프로젝트를 pull한 경우
+// : f_typescript(node_modules 폴더가 존재하는 위치)
+// - npm install
