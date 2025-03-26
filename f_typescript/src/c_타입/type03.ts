@@ -117,3 +117,5 @@ let product: ProductType = {
   name: "홍길동",
   price: 4000,
 };
+
+console.log(product);
