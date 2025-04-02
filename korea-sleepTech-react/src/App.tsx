@@ -9,6 +9,7 @@ import "./App.css";
 // >> 소문자 i를 인식하여 있는지 확인하고 가져온다.
 //    : 소문자 i로 시작하는게 2개 이상일 경우 경로를 지정해야 한다.
 import Basic from "@/pages/a_basic/"; // "@/pages/a_basic/index.ts"와 동일
+import Hooks from "@/pages/b_hooks";
 
 //& 기본 Vite React 앱의 경로
 // : localhost:5173
@@ -24,6 +25,7 @@ function App() {
           http://localhost:5173/basic
         */}
         <Route path="/basic" element={<Basic />} />
+        <Route path="/hooks" element={<Hooks />} />
       </Routes>
     </>
   );
