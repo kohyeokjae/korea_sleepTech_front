@@ -10,6 +10,9 @@ import "./App.css";
 //    : 소문자 i로 시작하는게 2개 이상일 경우 경로를 지정해야 한다.
 import Basic from "@/pages/a_basic/"; // "@/pages/a_basic/index.ts"와 동일
 import Hooks from "@/pages/b_hooks";
+import Router from "@/pages/c_router";
+import NaviBar from "./components/NaviBar";
+import RouterPractice from "@/pages/d_router_practice";
 
 //& 기본 Vite React 앱의 경로
 // : localhost:5173
@@ -17,6 +20,8 @@ function App() {
   return (
     <>
       <h1>Korea SleepTech React</h1>
+      <NaviBar />
+
       {/* Routes 태그: Route를 감싸는 컴포넌트 */}
       <Routes>
         {/* Route 태그: 단일 태그 사용 권장! */}
@@ -26,6 +31,16 @@ function App() {
         */}
         <Route path="/basic" element={<Basic />} />
         <Route path="/hooks" element={<Hooks />} />
+
+        {/* 
+          중첩 라우팅
+          : 해당 컴포넌트의 경로 내부에서 라우트 경로에 따라 페이지 전환이 일어남을 명시
+
+          path='/기본경로/*'
+        */}
+        <Route path="/router/*" element={<Router />} />
+
+        <Route path="/router-practice/*" element={<RouterPractice />} />
       </Routes>
     </>
   );

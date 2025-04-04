@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import './Practice01.css';
 
 //! 간단한 사진 캡쳐 & 표시 기능
 // : 웹캡으로 사진을 찍고, 찍은 사진을 화면에 표시
@@ -51,34 +52,44 @@ function Practice01() {
   };
 
   return (
-    <div>
-      <h1>카메라 앱</h1>
-      {/* playsInline: 전체화면 전환 없이 바로 재생 */}
-      <video
-        ref={videoRef}
-        autoPlay
-        playsInline
-        width="320"
-        height="240"
-      ></video>
-      <button onClick={handleCaptureImage}>이미지 캡쳐</button>
+    <div className="container">
+      <div className="camera-card">
+        <h1 className="title">카메라 앱</h1>
+        {/* playsInline: 전체화면 전환 없이 바로 재생 */}
+        <video
+          ref={videoRef}
+          autoPlay
+          playsInline
+          width="320"
+          height="240"
+          className="video"
+        ></video>
+        <button onClick={handleCaptureImage} className="capture-button">
+          이미지 캡쳐
+        </button>
 
-      <canvas
-        ref={canvasRef}
-        width="320"
-        height="240"
-        style={{ display: "none" }}
-      ></canvas>
-      {image && (
-        <div>
-          <h2>캡쳐된 이미지</h2>
-          <img
-            src={image}
-            alt="캡쳐된 이미지"
-            style={{ width: "320", height: "240" }}
-          />
-        </div>
-      )}
+        <canvas
+          ref={canvasRef}
+          width="320"
+          height="240"
+          style={{
+            display: "none",
+          }}
+        ></canvas>
+      
+        {image && (
+          <div className="image-section">
+            <h2 className="subtitle">캡쳐된 이미지</h2>
+            <img
+              src={image}
+              alt="캡쳐된 이미지"
+              style={{ width: "320", height: "240" }}
+              className="captured-image"
+            />
+          </div>
+        )}
+      </div>
+
     </div>
   );
 }
