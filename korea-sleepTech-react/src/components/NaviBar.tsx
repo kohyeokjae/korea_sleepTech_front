@@ -20,7 +20,10 @@ function NaviBar() {
     "router-practice",
     "review",
     "http",
-    "global-state"
+    "global-state",
+    "post-app",
+    "style",
+    "todo",
   ];
 
   return (
